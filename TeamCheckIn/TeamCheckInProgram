@@ -1,0 +1,61 @@
+#!usr/bin/python
+#Filename: TeamCheckIn.py
+
+import time
+import string
+
+class Team:
+	def __init__(self,team,n,nationality,age,ID):
+		self.team = team
+		self.n = n
+		self.nationality = nationality
+		self.age = age
+		self.ID = ID
+		print('''(Initialized Team info: %s)'''%(self.team))
+	def tell(self):
+		print('''Team name: %s.'''%(self.team))
+
+class member(Team):
+	def __init__(self,team,n,nationality,age,ID):
+		Team.__init__(self,team,n,nationality,age,ID)
+		print('''(Initialized member: %s)'''%(self.n))
+	def tell(self):
+		Team.tell(self)
+		print('''Name: %s;\nNationality: %s;\nAge: %s;\nID number: %s.'''%(self.n, self.nationality, self.age, self.ID))
+
+class leader(Team):
+	def __init__(self,team,n,nationality,age,ID,teamkey):
+		Team.__init__(self,team,n,nationality,age,ID)
+		self.teamkey = teamkey
+		print('''(Initialized team leader: %s)'''%(self.n))
+	def tell(self):
+		Team.tell(self)
+		print('''Name: %s;\nNationality: %s;\nAge: %s;\nID number: %s;\nTeam Key: %s.'''%(self.n, self.nationality, self.age, self.ID,self.teamkey))
+
+Identity = input('''Hello, please chose your identity(leader or member): ''')
+x = 'leader'
+y = 'member'
+
+time.sleep(2)
+
+if (Identity == x):
+	team = input('''Please type in your team name: ''')
+	n = input('''Please type in your name: ''')
+	nationality = input('''Please type in your nationality: ''')
+	age = input('''Please type in your age: ''')
+	ID = input('''Please type in youe ID number: ''')
+	teamkey = input('''Please type in your Team Key: ''')
+	l = leader(team,n,nationality,age,ID,teamkey)
+	print ()
+	l.tell()
+elif(Identity == y):
+	team = input('''Please type in your team name: ''')
+	n = input('''Please type in your name: ''')
+	nationality = input('''Please type in your nationality: ''')
+	age = input('''Please type in your age: ''')
+	ID = input('''Please type in youe ID number: ''')
+	m = member(team,n,nationality,age,ID)
+	print ()
+	m.tell()
+else:
+	print('''Error. Please restart this program.''')
